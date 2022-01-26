@@ -1,5 +1,7 @@
 # nvim-ale-diagnostic
 
+> This is a v2 rewrite of the forked repo: [nathanmsmith/nvim-ale-diagnostic](https://github.com/nathanmsmith/nvim-ale-diagnostic)
+
 Routes all Neovim LSP diagnostics to ALE for display. Useful if you like to manage all your errors in the same way.
 
 ## Requirements
@@ -17,7 +19,7 @@ Plug 'creativenull/nvim-ale-diagnostic'
 
 ### vim-packager
 
-```
+```vim
 call packager#add('creativenull/nvim-ale-diagnostic')
 ```
 

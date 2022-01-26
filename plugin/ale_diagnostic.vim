@@ -3,4 +3,4 @@ if has("nvim-0.6")
     autocmd!
     autocmd DiagnosticChanged * lua require("ale_diagnostic").notify()
   augroup END
-endfor
+endif

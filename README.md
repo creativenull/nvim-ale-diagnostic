@@ -14,19 +14,19 @@ Routes all Neovim LSP diagnostics to ALE for display. Useful if you like to mana
 ### vim-plug
 
 ```vim
-Plug 'creativenull/nvim-ale-diagnostic'
+Plug 'creativenull/nvim-ale-diagnostic', { 'branch': 'v2' }
 ```
 
 ### vim-packager
 
 ```vim
-call packager#add('creativenull/nvim-ale-diagnostic')
+call packager#add('creativenull/nvim-ale-diagnostic', { 'branch': 'v2' })
 ```
 
 ### packer.nvim
 
 ```lua
-use 'creativenull/nvim-ale-diagnostic'
+use { 'creativenull/nvim-ale-diagnostic', branch = 'v2' }
 ```
 
 ## Setup

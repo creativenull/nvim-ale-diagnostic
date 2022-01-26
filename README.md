@@ -1,43 +1,46 @@
 # nvim-ale-diagnostic
 
-> ⚠️ **Deprecated**: I've since moved to using Neovim's built-in diagnostics with [null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim) instead of ALE and no longer have the time to maintain this plugin. Please feel free to fork this repo if you still find it useful!
-
-Routes Neovim LSP diagnostics to ALE for display. Useful if you like to manage all your errors in the same way.
+Routes all Neovim LSP diagnostics to ALE for display. Useful if you like to manage all your errors in the same way.
 
 ## Requirements
 
-- Neovim nightly
+- Neovim >= 0.6
 - [ALE](https://github.com/dense-analysis/ale)
 
 ## Installation
 
-```
-Plug 'nathanmsmith/nvim-ale-diagnostic'
-" or, if you use a Vim 8 package manager
-call packager#add('nathanmsmith/nvim-ale-diagnostic', {'type': 'opt'})
-packadd nvim-ale-diagnostic
-" or your favorite package manager here
-" ...
+### vim-plug
 
-lua require("lsp")
+```vim
+Plug 'creativenull/nvim-ale-diagnostic'
 ```
 
-Then, put the following in a Lua file at `nvim/lua/lsp/init.lua`:
+### vim-packager
+
+```
+call packager#add('creativenull/nvim-ale-diagnostic')
+```
+
+### packer.nvim
 
 ```lua
-require("nvim-ale-diagnostic")
+use 'creativenull/nvim-ale-diagnostic'
+```
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = false,
-    virtual_text = false,
-    signs = true,
-    update_in_insert = false,
-  }
-)
+## Setup
+
+No setup required, besides adjusting the global `vim.diagnostic` config:
+
+```lua
+vim.diagnostic.config({
+  underline = false,
+  virtual_text = false,
+  signs = true,
+  update_in_insert = false,
+})
 ```
 
 ## Notes
 
 - `underline` and `virtual_text` are configurable, but you should probably disable them and configure those features through ALE.
-- The default Neovim diagnostic signs are overriden by this plugin.
+- The default Neovim diagnostic signs are overridden by this plugin.

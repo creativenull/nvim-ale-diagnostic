@@ -31,18 +31,13 @@ use { 'creativenull/nvim-ale-diagnostic', branch = 'v2' }
 
 ## Setup
 
-No setup required, besides adjusting the global `vim.diagnostic` config:
+No setup is required, but if you're using `vim.diagnostic` then turn them off to let ALE handle the diagnostics:
 
 ```lua
 vim.diagnostic.config({
   underline = false,
   virtual_text = false,
-  signs = true,
+  signs = false,
   update_in_insert = false,
 })
 ```
-
-## Notes
-
-- `underline` and `virtual_text` are configurable, but you should probably disable them and configure those features through ALE.
-- The default Neovim diagnostic signs are overridden by this plugin.

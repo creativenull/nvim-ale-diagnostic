@@ -1,6 +1,7 @@
 local M = {}
+local SOURCE = 'nvim-lsp'
 
----NR code from diagnostic
+---NR code from lsp code
 ---@param diagnostic table
 ---@return number
 local function get_nr(diagnostic)
@@ -11,14 +12,14 @@ local function get_nr(diagnostic)
   return ''
 end
 
----Filename from diagnostic
+---Filename from bufnr
 ---@param diagnostic table
 ---@return string
 local function get_filename(diagnostic)
   return vim.api.nvim_buf_get_name(diagnostic.bufnr)
 end
 
----Severity Map
+---Severity Mapping
 ---@param diagnostic table
 ---@return string
 local function get_severity_type(diagnostic)
@@ -32,16 +33,15 @@ local function get_severity_type(diagnostic)
   return ale_severity[diagnostic.severity]
 end
 
----Notify ALE on diagnostic change
+---Notify ALE on diagnostic change of "nvim-lsp" source
 ---@return nil
-function M.notify()
+function M.notify_ale()
   local ale_diagnostics = {}
-  local ale_source = 'nvim-lsp'
+  local lsp_diagnostics = vim.diagnostic.get()
   local bufnr = vim.api.nvim_get_current_buf()
-  local diagnostics = vim.diagnostic.get()
 
-  if not vim.tbl_isempty(diagnostics) then
-    for _, diagnostic in pairs(vim.diagnostic.get()) do
+  if not vim.tbl_isempty(lsp_diagnostics) then
+    for _, diagnostic in pairs(lsp_diagnostics) do
       -- Ensure it's the same buffer and not other buffers
       if diagnostic.bufnr == bufnr then
         table.insert(ale_diagnostics, {
@@ -60,9 +60,18 @@ function M.notify()
     end
   end
 
+  vim.call('ale#other_source#ShowResults',  bufnr, SOURCE, {})
+
   if not vim.tbl_isempty(ale_diagnostics) then
-    vim.api.nvim_call_function('ale#other_source#ShowResults', { bufnr, ale_source, ale_diagnostics })
+    vim.call('ale#other_source#ShowResults',  bufnr, SOURCE, ale_diagnostics)
   end
+end
+
+---Start checking the "nvim-lsp" source
+---@return nil
+function M.start_check()
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.call('ale#other_source#StartChecking',  bufnr, SOURCE)
 end
 
 return M

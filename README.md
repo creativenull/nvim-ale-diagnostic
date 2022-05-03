@@ -1,6 +1,7 @@
 # nvim-ale-diagnostic
 
 > This is a v2 rewrite of the forked repo: [nathanmsmith/nvim-ale-diagnostic](https://github.com/nathanmsmith/nvim-ale-diagnostic)
+> NOTE: This is only temporary until this PR is merged in ALE: [https://github.com/dense-analysis/ale/pull/4135](https://github.com/dense-analysis/ale/pull/4135)
 
 Routes all Neovim LSP diagnostics to ALE for display. Useful if you like to manage all your errors in the same way.
 

@@ -1,5 +1,7 @@
 # nvim-ale-diagnostic
 
+__PROJECT HAS BEEN ARCHIVED IN FAVOR OF: [https://github.com/dense-analysis/ale/pull/4345](https://github.com/dense-analysis/ale/pull/4345)__
+
 > This is a v2 rewrite of the repo: [nathanmsmith/nvim-ale-diagnostic](https://github.com/nathanmsmith/nvim-ale-diagnostic)
 
 > NOTE: This is only temporary until this PR is merged in ALE: [https://github.com/dense-analysis/ale/pull/4135](https://github.com/dense-analysis/ale/pull/4135)
